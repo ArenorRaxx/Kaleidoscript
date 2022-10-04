@@ -1,38 +1,27 @@
-# create-svelte
+# Kaleidoscript
+This version of Kaleidoscript, written with SvelteKit, is not yet functionnal in any way. If you wanna get an idea of it, go check [the vanillaJS version (unmaintained)](https://github.com/ArenorRaxx/Kaleidoscript-vanillaJS) and it works, figure it out. If you can't, well, what are you doing here.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## How to setup
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Please be sure to have `nodejs` and `npm` installed and up-to-date on your system, and to have all the rights you'd need. Then, clone the repository and start the server.
 
 ```bash
 npm run dev
-
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
 
-## Building
+## How to use
+Lol, didn't you read the header ?
 
-To create a production version of your app:
+## Non-technical milestones before "v1.0" `<<<`
 
-```bash
-npm run build
-```
+*`<<<` : Current progress of work. (this is a single-threaded process. hi.)*
+___
+ - [ ] Merge the [vanillaJS version](https://github.com/ArenorRaxx/Kaleidoscript-vanillaJS) to SvelteKit (by merely adapting it); `<<<`
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+ - [ ] Decide whether discontinuing the use of the GoJS Library would benefit the project by :
+ -- Creating custom "GraphObject" and adding it to the document;
+ -- Managing movements of custom "GraphObject" in the document;
+ -- Managing view translation over the document;
+ -- Mimicking diagramEvents, nodeDataArray, nodeTemplate, ...
