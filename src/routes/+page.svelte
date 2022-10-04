@@ -1,9 +1,6 @@
 <script lang="ts">
 	import Navbar from "./Navbar.svelte";
-	import AddFile from "./AddFileElement.svelte";
 </script>
-
-<AddFile/>
 
 <Navbar/>
 
