@@ -20,23 +20,12 @@
 	}
 </script>
 
-<li class="navElem">
-	{#if handleClick}
-	<a href="/" class="iconButton"
-		on:mouseenter={onSelectionTooltipChange}
-		on:mouseleave={onUnselectionTooltipHide}
-		on:click="{handleClick}">
+<li class="navElem" on:mouseenter={onSelectionTooltipChange} on:mouseleave={onUnselectionTooltipHide}>
+	<a href="/" class="iconButton" on:click="{handleClick}">
 		{@html icon}
 	</a>
-	{:else}
-	<a href="/" class="iconButton"
-		on:mouseenter={onSelectionTooltipChange}
-		on:mouseleave={onUnselectionTooltipHide}>
-		{@html icon}
-	</a>
-	{/if}
 	{#if component}
-	<svelte:component this={component}></svelte:component>
+	<svelte:component this={component}/>
 	{/if}
 </li>
 

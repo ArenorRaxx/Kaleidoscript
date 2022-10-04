@@ -14,16 +14,16 @@
 </script>
 
 <div id="nav-container">
-<nav id="navBar">
-	<ul id="navBar-nav">
-		{#each navOptions as element}
-		<NavElem {element} on:selected={showTooltip} on:unselected={hideTooltip}/>
-		{/each}
-	</ul>
-</nav>
-{#if tooltipText}
+	<nav id="navBar">
+		<ul id="navBar-nav">
+			{#each navOptions as element}
+			<NavElem {element} on:selected={showTooltip} on:unselected={hideTooltip}/>
+			{/each}
+		</ul>
+	</nav>
+	{#if tooltipText}
 	<div id="tooltip-box" in:fade={{duration: 100}} out:fade={{duration: 200}}>{tooltipText}</div>
-{/if}
+	{/if}
 </div>
 
 <style>
