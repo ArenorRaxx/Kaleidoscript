@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
 
-	import AddFileElement from "./AddFileElement.svelte";
-	import { onAddFileClick } from "./AddFileElement.svelte"
-	import plusIconUrl from "../plus.svg?src";
-	import cogIconUrl from "../cog.svg?src";
+	import AddFileElement from "../file_management/AddFileElement.svelte";
+	import { onAddFileClick } from "../file_management/AddFileElement.svelte"
+	import plusIconUrl from "../../plus.svg?src";
+	import cogIconUrl from "../../cog.svg?src";
 
 	export type NavOption = {
 		icon: string,
