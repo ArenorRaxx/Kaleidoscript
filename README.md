@@ -3,11 +3,16 @@ This version of Kaleidoscript, written with SvelteKit, is not yet functionnal in
 
 ## How to setup
 
-Please be sure to have `nodejs` and `npm` installed and up-to-date on your system, and to have all the rights you'd need. Then, clone the repository and start the server.
-
+Please be sure to have `nodejs` and `npm` installed and up-to-date on your system, and to have all the rights you'd need. Then, clone the repository and run
 ```bash
+npm install
+
+# then start the server
+
 npm run dev
+
 # or start the server and open the app in a new browser tab
+
 npm run dev -- --open
 ```
 
