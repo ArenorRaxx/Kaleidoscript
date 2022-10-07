@@ -10,14 +10,26 @@
 
 </script>
 
-<Navbar/>
+<div id="nav-container">
+	<Navbar/></div>
+<div id="action-zone">
+	<Diagram/></div>
 
-<style global>
-	body {
-		background-color: bisque;
+<style>
+#nav-container {
+	z-index: 100;
+	width: 100%;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-	.iconButton:hover svg {
-		fill: whitesmoke;
+#action-zone {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 </style>

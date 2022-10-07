@@ -2,12 +2,6 @@
 	import { navOptions } from "./Nav.svelte"
 	import NavElem from "./NavElem.svelte";
 	import { fade } from "svelte/transition";
-	import { onMount } from "svelte";
-	import { fileStore } from "$lib/file_management/file_list";
-
-	function onAddFile(file: File) {
-		console.log("yes");
-	}
 
 	let tooltipText: string = "";
 
@@ -17,45 +11,24 @@
 	function hideTooltip() {
 		tooltipText = "";
 	}
-	
-	onMount(fileStore.subscribe(onAddFile));
 </script>
 
-<div id="nav-container">
-	<nav id="navBar">
-		<ul id="navBar-nav">
-			{#each navOptions as element}
-			<NavElem {element} on:selected={showTooltip} on:unselected={hideTooltip}/>
-			{/each}
-		</ul>
-	</nav>
-	{#if tooltipText}
-	<div id="tooltip-box" in:fade={{duration: 100}} out:fade={{duration: 200}}>{tooltipText}</div>
-	{/if}
-</div>
+<nav id="navBar">
+	<ul id="navBar-nav">
+		{#each navOptions as element}
+		<NavElem {element} on:selected={showTooltip} on:unselected={hideTooltip}/>
+		{/each}
+	</ul>
+</nav>
+{#if tooltipText}
+<div id="tooltip-box" in:fade={{duration: 100}} out:fade={{duration: 200}}>{tooltipText}</div>
+{/if}
 
 <style>
-
-	:root {
-		--bg: rgba(34, 34, 34, 0.7);
-		--nav-size: 60px;
-		--border: 1px solid #47474d;
-
-		--tooltip-bg: rgba(19, 19, 19, 0.7);
-	}
-
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
-	}
-
-	#nav-container {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 	}
 
 	#navBar {
