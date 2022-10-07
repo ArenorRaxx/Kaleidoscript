@@ -6,12 +6,12 @@
 </script>
 
 <script lang="ts">
-	import { addFileStore } from "./file_list.js";
+	import { fileStore } from "./file_list.js";
 
 	function handleAddFile(event: Event){
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files)
-			$addFileStore = inputElement.files[0];
+			$fileStore = inputElement.files[0];
 	}
 </script>
 

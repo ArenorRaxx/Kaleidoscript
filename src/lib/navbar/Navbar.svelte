@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { navOptions } from "./Nav.svelte"
 	import NavElem from "./NavElem.svelte";
-	import { fade } from "svelte/transition"
+	import { fade } from "svelte/transition";
+	import { onMount } from "svelte";
+	import { fileStore } from "$lib/file_management/file_list";
+
+	function onAddFile(file: File) {
+		console.log("yes");
+	}
 
 	let tooltipText: string = "";
 
@@ -11,6 +17,8 @@
 	function hideTooltip() {
 		tooltipText = "";
 	}
+	
+	onMount(fileStore.subscribe(onAddFile));
 </script>
 
 <div id="nav-container">
