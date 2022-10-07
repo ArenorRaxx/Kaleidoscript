@@ -1,17 +1,17 @@
-<script context="module" lang="ts">
-	export function onAddFileClick() {
-		const fileInputElement = document.getElementById("fileInputElement");
-		fileInputElement?.click();
-	}
-</script>
-
 <script lang="ts">
-	import { fileStore } from "./file_list.js";
+	import FileStore from "./FileStoreModule";
 
 	function handleAddFile(event: Event){
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files)
-			$fileStore = inputElement.files[0];
+			$FileStore = inputElement.files[0];
+	}
+</script>
+
+<script context="module" lang="ts">
+	export function onAddFileClick() {
+		const fileInputElement = document.getElementById("fileInputElement");
+		fileInputElement?.click();
 	}
 </script>
 
