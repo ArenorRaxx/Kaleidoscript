@@ -1,5 +1,9 @@
-<script lang="ts">
+<script context="module" lang="ts">
+	export const DiagramElem = {
+		addFile() {
 
+		}
+	}
 </script>
 
 <div id="diagram">

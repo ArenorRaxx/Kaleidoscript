@@ -1,13 +1,15 @@
-<script lang="ts">
+<script context="module" lang="ts">
 	import FileStore from "$lib/file_management/FileStoreModule";
 	import Navbar from "$lib/navbar/Navbar.svelte";
 	import Diagram from "$lib/diagram/Diagram.svelte";
-	import { onDestroy } from "svelte"; 
 
 	const unsubscribe = FileStore.subscribe((value) => console.log("New File Added"));
+</script>
+
+<script>
+	import { onDestroy } from "svelte"; 
 
 	onDestroy(() => (unsubscribe()));
-
 </script>
 
 <div id="nav-container">

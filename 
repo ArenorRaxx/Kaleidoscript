@@ -1,0 +1,84 @@
+[33mcommit 55842cf244ef28dfadabe5b1fb5c5b63b3a529c8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Fri Oct 7 18:21:40 2022 +0200
+
+    Restructuring CSS and adding the diagram
+
+[33mcommit ee2cbd97e174304a913f35ecf97368361c1be9df[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Fri Oct 7 18:20:44 2022 +0200
+
+    Making a singleton for FileStore
+
+[33mcommit 9bf83bce8233527475226c4f37db04018213c1dd[m
+Author: Mateo Corso <mcorso@student.42.fr>
+Date:   Fri Oct 7 16:19:07 2022 +0200
+
+    Working on fileList store on-add behavior
+
+[33mcommit 898ee58a1bb7fa5ac4a859e46c7f326cbeb7b2ca[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Wed Oct 5 16:14:30 2022 +0200
+
+    Basic file store implemented
+
+[33mcommit e4d3c821772e2370befcf0538bb438a62aed99ce[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 19:29:55 2022 +0200
+
+    Implementing a basic file store
+
+[33mcommit 80f134b2780ea3ac3c1df49412636b5ceb3c9dd2[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 19:29:36 2022 +0200
+
+    Creating a folder for file_management code
+
+[33mcommit a4eb0f5cbc514f55db60e26ec032c117362dc762[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 18:16:23 2022 +0200
+
+    Restructuring src files of the project
+
+[33mcommit 2fa1cf3969776bddf3c08aa56455218e4e63e51e[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 18:00:47 2022 +0200
+
+    Removing <AddFile/> elem from page
+
+[33mcommit 56669f7c4f0e6814b2e8ce816c3288067a938be9[m
+Merge: bfb2f20 76bc542
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 17:59:03 2022 +0200
+
+    Merge branch 'master' of github.com:ArenorRaxx/Kaleidoscript
+
+[33mcommit bfb2f204c98d09718be33ff9a5e060b5dc1b3059[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 17:58:55 2022 +0200
+
+    Adding GoJS Library to the project
+
+[33mcommit 76bc542f479d71ea67288b07bf1aaef670b821e6[m
+Author: ArenorRaxx <77867649+ArenorRaxx@users.noreply.github.com>
+Date:   Tue Oct 4 17:58:01 2022 +0200
+
+    Update README.md
+
+[33mcommit 1bde8286239cccf8ec2498576b68a97184552780[m
+Author: ArenorRaxx <mateocorso@gmail.com>
+Date:   Tue Oct 4 17:55:54 2022 +0200
+
+    Minor package change
+
+[33mcommit d40b54b3693c469d0df07783ca289a5969da5ef6[m
+Author: ArenorRaxx <77867649+ArenorRaxx@users.noreply.github.com>
+Date:   Tue Oct 4 16:31:52 2022 +0200
+
+    Update README.md
+
+[33mcommit c9b6e2028427bd09438e463ab8374cacec0c4248[m
+Author: Mateo Corso <mcorso@student.42.fr>
+Date:   Tue Oct 4 16:00:45 2022 +0200
+
+    First push
