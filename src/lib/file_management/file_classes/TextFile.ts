@@ -3,12 +3,8 @@ import type { types as fileTypes, NodeFile } from "./types";
 
 
 export default class TextFile extends TypedNodeFile {
-
-	public readonly category: fileTypes;
-
 	constructor(file: File) {
-		super(file.name, file);
-		this.category = "textFile";
+		super(file);
 	}
 
 	get data(): Promise<string> {

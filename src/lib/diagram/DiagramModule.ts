@@ -1,4 +1,6 @@
 import go, { Diagram, Part, Map } from "gojs";
+import type TextFile from "$lib/file_management/file_classes/TextFile";
+import type { TypedNodeFile } from "$lib/file_management/file_classes";
 
 const o$ = go.GraphObject.make;
 const diagram: Diagram = new go.Diagram();
@@ -23,8 +25,9 @@ const textFileTemplate: Part =
 			o$(go.TextBlock, {
 				text: "Title",
 				font: "small-caps 700 20px Monserrat, sans-serif",
+				textAlign: "center",
 				margin: new go.Margin(12, 5, 5, 12)
-			}, new go.Binding("text", "nameOfFile")),
+			}, new go.Binding("text", "name")),
 			o$(go.TextBlock, {
 				text: "Default text of document.",
 				font: "400 10px Monserrat sans-serif",
@@ -32,7 +35,7 @@ const textFileTemplate: Part =
 				maxLines: 17,
 				margin: new go.Margin(0, 3, 0, 10),
 				overflow: go.TextBlock.OverflowEllipsis
-			}, new go.Binding("text"))
+			}, new go.Binding("text", "data"))
 		)
 	);
 
@@ -45,12 +48,10 @@ export default {
 		diagram.div = diagramDiv;
 	},
 
-	async addFile(file: File) {
-		const nameOfFile = file.name;
-		const textOfFile = await file.text();
+	async addFile(file: TypedNodeFile) {
+		const fileNodeToAdd = await file.node;
 		diagram.commit((diagram) => {
-			diagram.model.addNodeData({ name: nameOfFile, text: textOfFile, category: "textFile" });
-			console.log(diagram.model.nodeDataArray);
-		}, "add node")
+			diagram.model.addNodeData(fileNodeToAdd);
+		}, `adding ${fileNodeToAdd.category}`)
 	}
 }
