@@ -1,5 +1,5 @@
 import { TypedNodeFile } from ".";
-import type { types as fileTypes, NodeFile } from "./types";
+import type { NodeFile } from "./types";
 
 
 export default class TextFile extends TypedNodeFile {
