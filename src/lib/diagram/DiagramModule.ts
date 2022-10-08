@@ -15,12 +15,12 @@ const textFileTemplate: Part =
 			figure: "RoundedRectangle",
 			height: 307,
 			width: 220,
-			fill: "#909090"
+			fill: "#222222a0"
 		}),
 		o$(go.Panel, "Vertical", {
 			height: 297,
 			width: 210,
-			background: "#f5f5f5"
+			background: "#fafafaee"
 		},
 			o$(go.TextBlock, {
 				text: "Title",
