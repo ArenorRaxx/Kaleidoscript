@@ -1,22 +1,26 @@
-import type { AbstractFile } from "./AbstractFile";
+import type { types as fileTypes, NodeFile, GenericFileClass, TypedFileClass, TypedNodeFileClass } from "./types";
 
-export type types = "textFile" | "imageFile";
-
-export type NodeFile = {
-	name: string;
-	data: string;
-	category: types;
+export abstract class GenericFile implements GenericFileClass {
+	protected constructor(
+		public readonly name: string,
+		public readonly file: File
+	){};
 }
 
-export interface FileClass {
-	name: string;
-	file: File;
-	category: types;
-
-	get data(): Promise<string>;
+export abstract class TypedFile extends GenericFile implements TypedFileClass {
+	abstract readonly category: fileTypes;
+	abstract get data(): Promise<string>;
 }
 
-export interface NodeFileClass extends FileClass {
-	get node(): Promise<NodeFile>;
-	makeNodeFromFile(fileData: string): NodeFile;
+export abstract class TypedNodeFile extends TypedFile implements TypedNodeFileClass {
+	abstract get node(): Promise<NodeFile>;
+
+	protected makeNodeFromFile(fileData: string): NodeFile {
+		const newNodeData = {
+			name: this.name,
+			data: fileData,
+			category: this.category
+		}
+		return (newNodeData);
+	}
 }

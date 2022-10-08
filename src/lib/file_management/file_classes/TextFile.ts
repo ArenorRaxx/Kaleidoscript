@@ -1,8 +1,8 @@
-import { AbstractFile } from "./AbstractFile";
-import type { NodeFile, NodeFileClass, types as fileTypes } from "./";
+import { TypedNodeFile } from ".";
+import type { types as fileTypes, NodeFile } from "./types";
 
 
-export default class TextFile extends AbstractFile implements NodeFileClass {
+export default class TextFile extends TypedNodeFile {
 
 	public readonly category: fileTypes;
 
@@ -23,13 +23,5 @@ export default class TextFile extends AbstractFile implements NodeFileClass {
 			resolve(fileNode); 
 		});
 		return (promise);
-	}
-
-	makeNodeFromFile(fileData: string): NodeFile {
-		return {
-			name: this.name,
-			data: fileData,
-			category: this.category
-		}
 	}
 }
