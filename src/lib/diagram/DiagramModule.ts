@@ -23,13 +23,13 @@ const textFileTemplate: Part =
 			o$(go.TextBlock, {
 				text: "Title",
 				font: "small-caps 700 20px Monserrat, sans-serif",
-				margin: new go.Margin(12, 5, 5, 5)
+				margin: new go.Margin(12, 5, 5, 12)
 			}, new go.Binding("text", "nameOfFile")),
 			o$(go.TextBlock, {
 				text: "Default text of document.",
-				font: "400 7px Monserrat sans-serif",
-				spacingAbove: 5,
-				maxLines: 20,
+				font: "400 10px Monserrat sans-serif",
+				spacingAbove: 3,
+				maxLines: 17,
 				margin: new go.Margin(0, 3, 0, 10),
 				overflow: go.TextBlock.OverflowEllipsis
 			}, new go.Binding("text"))
@@ -45,9 +45,11 @@ export default {
 		diagram.div = diagramDiv;
 	},
 
-	addFile(file: File) {
+	async addFile(file: File) {
+		const nameOfFile = file.name;
+		const textOfFile = await file.text();
 		diagram.commit((diagram) => {
-			diagram.model.addNodeData({ category: "textFile" });
+			diagram.model.addNodeData({ name: nameOfFile, text: textOfFile, category: "textFile" });
 			console.log(diagram.model.nodeDataArray);
 		}, "add node")
 	}
