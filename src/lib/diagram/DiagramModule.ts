@@ -1,13 +1,15 @@
 import go, { Diagram, Part, Map } from "gojs";
 import type { NodeFile } from "$lib/file_management/file_classes";
 
-const o$ = go.GraphObject.make;
+const $ = go.GraphObject.make;
 const diagram: Diagram = new go.Diagram();
-diagram.model = new go.GraphLinksModel([ ]);
+const templateMap: Map<string, go.Part> = new go.Map<string, go.Part>();
+
+diagram.nodeTemplateMap = templateMap;
 
 const textFileTemplate: Part =
-	o$(go.Node, "Auto",
-		o$(go.Shape, {
+	$(go.Node, "Auto",
+		$(go.Shape, {
 			fromLinkable: true,
 			toLinkable: true,
 			portId: "",
@@ -16,18 +18,18 @@ const textFileTemplate: Part =
 			width: 220,
 			fill: "#222222a0"
 		}),
-		o$(go.Panel, "Vertical", {
+		$(go.Panel, "Vertical", {
 			height: 297,
 			width: 210,
 			background: "#fafafaee"
 		},
-			o$(go.TextBlock, {
+			$(go.TextBlock, {
 				text: "Title",
 				font: "small-caps 700 20px Monserrat, sans-serif",
 				textAlign: "center",
 				margin: new go.Margin(12, 5, 5, 12)
 			}, new go.Binding("text", "name")),
-			o$(go.TextBlock, {
+			$(go.TextBlock, {
 				text: "Default text of document.",
 				font: "400 10px Monserrat sans-serif",
 				spacingAbove: 3,
@@ -38,9 +40,37 @@ const textFileTemplate: Part =
 		)
 	);
 
-const templateMap: Map<string, go.Part> = new go.Map<string, go.Part>();
+const imageFileTemplate =
+	$(go.Node, "Vertical",
+		$(go.Panel, "Auto", {
+			background: "#222222a0",
+		},
+			$(go.Shape, {
+				fromLinkable: true,
+				toLinkable: true,
+				portId: "",
+				figure: "RoundedRectangle",
+				fill: "#fafafaee",
+				cursor: "pointer"
+			}),
+			$(go.Picture, {
+				margin: new go.Margin(10),
+				imageStretch: go.GraphObject.Uniform
+			}, 	new go.Binding("source", "data"),
+				new go.Binding("width"),
+				new go.Binding("height"))
+		),
+		$(go.TextBlock, {
+			text: "Label",
+			font: "small-caps 700 20px Monserrat, sans-serif",
+			margin: new go.Margin(5)
+		}, new go.Binding("text", "name"))
+	);
+
 templateMap.add("textFile", textFileTemplate);
-diagram.nodeTemplateMap = templateMap;
+templateMap.add("imageFile", imageFileTemplate);
+
+diagram.model = new go.GraphLinksModel([ ]);
 
 export default {
 	init(diagramDiv: HTMLDivElement) {
