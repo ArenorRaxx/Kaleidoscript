@@ -1,5 +1,5 @@
 import { NodeFile } from ".";
-import type { NodeData } from "./types";
+import type { PartialData } from "./types";
 
 export default class TextFile extends NodeFile {
 	constructor(file: File) {
@@ -9,9 +9,16 @@ export default class TextFile extends NodeFile {
 			"textFile"
 		);
 	}
-
-	protected get data(): Promise<string> {
+	
+	get data(): Promise<string> {
 		const data = this.file.text();
 		return (data);
 	}
+
+	protected async getPartialData(): Promise<PartialData> {
+		return new Promise<PartialData>((resolve, reject) => {
+			resolve({});
+		});
+	}
+
 }

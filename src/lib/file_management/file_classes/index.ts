@@ -1,4 +1,4 @@
-import type { types as fileTypes, NodeData, GenericFileClass, NodeFileClass } from "./types";
+import type { types as fileTypes, NodeData, PartialData, GenericFileClass, NodeFileClass, ImageNodeData } from "./types";
 
 abstract class GenericFile implements GenericFileClass {
 	protected constructor(
@@ -10,22 +10,17 @@ abstract class GenericFile implements GenericFileClass {
 
 export abstract class NodeFile extends GenericFile implements NodeFileClass {
 	get node(): Promise<NodeData> {
-		const promise = new Promise<NodeData>(async (resolve, reject) => {
-			const fileData = await this.data;
-			const fileNode: NodeData = this.makeNodeFromFile(fileData);
-			resolve(fileNode); 
+		return new Promise<NodeData>(async (resolve, reject) => {
+			const partialData: PartialData = await this.getPartialData();
+			resolve({
+				name: this.name,
+				data: await this.data,
+				category: this.category,
+				...partialData
+			});
 		});
-		return (promise);
-	}
+	};
 	
-	protected abstract get data(): Promise<string>;
-	
-	private makeNodeFromFile(fileData: string): NodeData {
-		const newNodeData = {
-			name: this.name,
-			data: fileData,
-			category: this.category
-		}
-		return (newNodeData);
-	}
+	abstract get data(): Promise<string>;
+	protected abstract getPartialData(): Promise<PartialData>;
 }

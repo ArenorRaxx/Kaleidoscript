@@ -14,27 +14,26 @@ const textFileTemplate: Part =
 			toLinkable: true,
 			portId: "",
 			figure: "RoundedRectangle",
-			height: 307,
-			width: 220,
 			fill: "#222222a0"
 		}),
 		$(go.Panel, "Vertical", {
 			height: 297,
 			width: 210,
+			margin: new go.Margin(10),
 			background: "#fafafaee"
 		},
 			$(go.TextBlock, {
 				text: "Title",
 				font: "small-caps 700 20px Monserrat, sans-serif",
 				textAlign: "center",
-				margin: new go.Margin(12, 5, 5, 12)
+				margin: new go.Margin(10, 5, 5, 12)
 			}, new go.Binding("text", "name")),
 			$(go.TextBlock, {
 				text: "Default text of document.",
 				font: "400 10px Monserrat sans-serif",
 				spacingAbove: 3,
 				maxLines: 17,
-				margin: new go.Margin(0, 3, 0, 10),
+				margin: new go.Margin(0, 10, 0, 10),
 				overflow: go.TextBlock.OverflowEllipsis
 			}, new go.Binding("text", "data"))
 		)
@@ -42,15 +41,13 @@ const textFileTemplate: Part =
 
 const imageFileTemplate =
 	$(go.Node, "Vertical",
-		$(go.Panel, "Auto", {
-			background: "#222222a0",
-		},
+		$(go.Panel, "Auto",
 			$(go.Shape, {
 				fromLinkable: true,
 				toLinkable: true,
 				portId: "",
 				figure: "RoundedRectangle",
-				fill: "#fafafaee",
+				fill: "#222222a0",
 				cursor: "pointer"
 			}),
 			$(go.Picture, {
