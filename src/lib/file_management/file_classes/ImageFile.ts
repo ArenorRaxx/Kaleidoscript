@@ -6,8 +6,10 @@ type Size = {
 	height: number
 }
 
+const BOUNDARY: Size = { width: 256, height: 144 }
+
 export default class ImageFile extends NodeFile {
-	constructor(file: File) {
+	public constructor(file: File) {
 		super(
 			file.name,
 			file,
@@ -15,7 +17,7 @@ export default class ImageFile extends NodeFile {
 		);
 	}
 
-	get data(): Promise<string> {
+	public get data(): Promise<string> {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
 
@@ -41,14 +43,13 @@ export default class ImageFile extends NodeFile {
 
 	private getSize(src: string): Promise<Size> {
 		return new Promise((resolve, reject) => {
-			const img = new Image()
+			const img = new Image();
+			
 			img.onload = () => {
 				const imageSize: Size = { width: img.width, height: img.height };
-				const boundary: Size = { width: 256, height: 144 };
-				const resized = this.resizeImageProportionally(imageSize, boundary);
+				const resized = this.resizeImageProportionally(imageSize, BOUNDARY);
 				resolve(resized);
 			}
-			
 			img.src = src;
 		})
 	}

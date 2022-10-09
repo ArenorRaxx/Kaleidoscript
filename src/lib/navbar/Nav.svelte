@@ -9,8 +9,8 @@
 		icon: string,
 		description: string,
 		data: {
-			handleClick?: any,
 			component?: ConstructorOfATypedSvelteComponent,
+			handleClick?: any,
 		}
 	}
 

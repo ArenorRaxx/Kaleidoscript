@@ -1,14 +1,18 @@
 <script lang="ts">
 	import { navOptions } from "./Nav.svelte"
 	import NavElem from "./NavElem.svelte";
-	import { fade } from "svelte/transition";
+	import Tooltip from "./Tooltip.svelte";
 
 	let tooltipText: string = "";
+	let visible: boolean = false;
 
 	function showTooltip(event: CustomEvent) {
 		tooltipText = event.detail.description;
+		visible = true;
 	}
+
 	function hideTooltip() {
+		visible = false;
 		tooltipText = "";
 	}
 </script>
@@ -20,9 +24,7 @@
 		{/each}
 	</ul>
 </nav>
-{#if tooltipText}
-<div id="tooltip-box" in:fade={{duration: 100}} out:fade={{duration: 200}}>{tooltipText}</div>
-{/if}
+<Tooltip bind:visible>{tooltipText}</Tooltip>
 
 <style>
 	ul {
@@ -46,20 +48,6 @@
 
 		display: flex;
 		justify-content: flex-end;
-	}
-
-	#tooltip-box {
-		height: calc(var(--nav-size) * 0.7);
-
-		float: left;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0 0 0 5px;
-		padding: 0.5rem 1rem;
-
-		background-color: var(--tooltip-bg);
-		color: whitesmoke;
 	}
 
 </style>

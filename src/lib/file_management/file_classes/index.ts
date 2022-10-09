@@ -9,7 +9,7 @@ abstract class GenericFile implements GenericFileClass {
 }
 
 export abstract class NodeFile extends GenericFile implements NodeFileClass {
-	get node(): Promise<NodeData> {
+	public get node(): Promise<NodeData> {
 		return new Promise<NodeData>(async (resolve, reject) => {
 			const partialData: PartialData = await this.getPartialData();
 			resolve({
@@ -21,6 +21,6 @@ export abstract class NodeFile extends GenericFile implements NodeFileClass {
 		});
 	};
 	
-	abstract get data(): Promise<string>;
+	public abstract get data(): Promise<string>;
 	protected abstract getPartialData(): Promise<PartialData>;
 }

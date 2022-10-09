@@ -3,9 +3,9 @@ import type { NodeFile } from "$lib/file_management/file_classes";
 
 const $ = go.GraphObject.make;
 const diagram: Diagram = new go.Diagram();
-const templateMap: Map<string, go.Part> = new go.Map<string, go.Part>();
+const newTemplateMap: Map<string, go.Part> = new go.Map<string, go.Part>();
 
-diagram.nodeTemplateMap = templateMap;
+diagram.nodeTemplateMap = newTemplateMap;
 
 const textFileTemplate: Part =
 	$(go.Node, "Auto",
@@ -64,8 +64,8 @@ const imageFileTemplate =
 		}, new go.Binding("text", "name"))
 	);
 
-templateMap.add("textFile", textFileTemplate);
-templateMap.add("imageFile", imageFileTemplate);
+newTemplateMap.add("textFile", textFileTemplate);
+newTemplateMap.add("imageFile", imageFileTemplate);
 
 diagram.model = new go.GraphLinksModel([ ]);
 

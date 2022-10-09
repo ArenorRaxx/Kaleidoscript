@@ -23,7 +23,6 @@ function get_file(indexOfFile: number): NodeFile | null {
 }
 
 export default {
-
 	subscribe(callback: (file: NodeFile) => void): Function {
 		let currentFile = get_currentFile();
 		if (currentFile !== null)

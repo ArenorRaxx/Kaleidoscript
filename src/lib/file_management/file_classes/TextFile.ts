@@ -2,7 +2,7 @@ import { NodeFile } from ".";
 import type { PartialData } from "./types";
 
 export default class TextFile extends NodeFile {
-	constructor(file: File) {
+	public constructor(file: File) {
 		super(
 			file.name,
 			file,
@@ -10,7 +10,7 @@ export default class TextFile extends NodeFile {
 		);
 	}
 	
-	get data(): Promise<string> {
+	public get data(): Promise<string> {
 		const data = this.file.text();
 		return (data);
 	}
