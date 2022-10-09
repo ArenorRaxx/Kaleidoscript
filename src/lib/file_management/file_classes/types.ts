@@ -1,6 +1,6 @@
 export type types = "textFile" | "imageFile";
 
-export type NodeFile = {
+export type NodeData = {
 	name: string;
 	data: string;
 	category: types;
@@ -11,12 +11,8 @@ export interface GenericFileClass {
 	readonly file: File;
 }
 
-export interface TypedFileClass extends GenericFileClass {
+export interface NodeFileClass extends GenericFileClass {
 	readonly category: types;
 
-	get data(): Promise<string>;
-}
-
-export interface TypedNodeFileClass extends TypedFileClass {
-	get node(): Promise<NodeFile>;
+	get node(): Promise<NodeData>;
 }

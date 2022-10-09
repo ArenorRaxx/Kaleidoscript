@@ -1,6 +1,5 @@
 import go, { Diagram, Part, Map } from "gojs";
-import type TextFile from "$lib/file_management/file_classes/TextFile";
-import type { TypedNodeFile } from "$lib/file_management/file_classes";
+import type { NodeFile } from "$lib/file_management/file_classes";
 
 const o$ = go.GraphObject.make;
 const diagram: Diagram = new go.Diagram();
@@ -48,10 +47,10 @@ export default {
 		diagram.div = diagramDiv;
 	},
 
-	async addFile(file: TypedNodeFile) {
+	async addFile(file: NodeFile) {
 		const fileNodeToAdd = await file.node;
 		diagram.commit((diagram) => {
 			diagram.model.addNodeData(fileNodeToAdd);
-		}, `adding ${fileNodeToAdd.category}`)
+		}, `adding ${fileNodeToAdd.category} to the diagram`)
 	}
 }

@@ -1,23 +1,17 @@
-import { TypedNodeFile } from ".";
-import type { NodeFile } from "./types";
+import { NodeFile } from ".";
+import type { NodeData } from "./types";
 
-
-export default class TextFile extends TypedNodeFile {
+export default class TextFile extends NodeFile {
 	constructor(file: File) {
-		super(file);
+		super(
+			file.name,
+			file,
+			"textFile"
+		);
 	}
 
-	get data(): Promise<string> {
+	protected get data(): Promise<string> {
 		const data = this.file.text();
 		return (data);
-	}
-
-	get node(): Promise<NodeFile> {
-		const promise = new Promise<NodeFile>(async (resolve, reject) => {
-			const fileData = await this.data;
-			const fileNode: NodeFile = this.makeNodeFromFile(fileData);
-			resolve(fileNode); 
-		});
-		return (promise);
 	}
 }

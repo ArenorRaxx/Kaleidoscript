@@ -1,32 +1,34 @@
-import type { TypedNodeFile } from "./file_classes/";
+import type { NodeFile } from "./file_classes/";
+import FileSorter from "./FileSortAndInit";
 
-let fileList: (TypedNodeFile)[] = [ ];
+let fileList: NodeFile[] = [];
 const subscribers: Function[] = [];
 
-function set_currentFile(newFile: TypedNodeFile): TypedNodeFile {
-	fileList = [newFile, ...fileList];
-	return (newFile);
-}
-
-function get_currentFile(): TypedNodeFile | null {
+function get_currentFile(): NodeFile | null {
 	if (fileList.length == 0)
 		return (null);
 	return (fileList[0]);
 }
 
-function get_file(indexOfFile: number): TypedNodeFile | null {
+function store_file(newFile: File): NodeFile {
+	const newNodeFile = FileSorter(newFile);
+	fileList = [newNodeFile, ...fileList];
+	return (newNodeFile);
+}
+
+function get_file(indexOfFile: number): NodeFile | null {
 	if (indexOfFile < 0)
 		return (null);
-	return (fileList[0]);
+	return (fileList[indexOfFile]);
 }
 
 export default {
 
-	subscribe(callback: (file: TypedNodeFile) => void): Function {
+	subscribe(callback: (file: NodeFile) => void): Function {
 		let currentFile = get_currentFile();
 		if (currentFile !== null)
 			callback(currentFile);
-		
+
 		subscribers.push(callback);
 
 		return () => {
@@ -35,17 +37,18 @@ export default {
 		}
 	},
 
-	set(newFile: TypedNodeFile) {
+	set(newFile: File) {
+		const nodeFile = store_file(newFile);
 		subscribers.forEach((toCall) => {
-			toCall(set_currentFile(newFile))
+			toCall(nodeFile);
 		});
 	},
 
-	get(): TypedNodeFile | null {
+	get(): NodeFile | null {
 		return get_currentFile();
 	},
 
-	getFileByName(fileToSearch: string): TypedNodeFile | null {
+	getFileByName(fileToSearch: string): NodeFile | null {
 		const indexOfFile = fileList.findIndex(file => fileToSearch === file.name);
 		const file = get_file(indexOfFile);
 		return (file);
