@@ -13,6 +13,7 @@
 	z-index: 100;
 	width: 100%;
 	position: absolute;
+	top: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
