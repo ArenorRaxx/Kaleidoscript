@@ -1,15 +1,21 @@
 <script lang="ts">
+	import { toggleVisualiser } from "./VisualiserStore";
 	import type { Tweened } from "svelte/motion";
 	import { tweened } from "svelte/motion";
-	import { quintInOut } from "svelte/easing";
+	import { quartOut } from "svelte/easing";
+	import { onDestroy } from "svelte";
 
-	export let toggleVisualiser = false;
-	
-	const widthOfVisu: Tweened<number> = tweened(50, {
-		duration: 2000,
-		easing: quintInOut
+	const widthOfVisu: Tweened<number> = tweened(100, {
+		duration: 1000,
+		easing: quartOut
 	})
-	$: $widthOfVisu = 50 + (toggleVisualiser ? 50 : 0);
+
+	const unsubscribeToggle = toggleVisualiser.subscribe((toggle: boolean): void => {
+		const newValueOfVisuWidth: number = 50 + (toggle ? 0 : 50);
+		widthOfVisu.set(newValueOfVisuWidth);
+	})
+
+	onDestroy(() => unsubscribeToggle);
 </script>
 
 <div id="visu-container" style="right: -{$widthOfVisu}%">

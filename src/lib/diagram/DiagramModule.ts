@@ -1,5 +1,6 @@
 import go, { Diagram, Part, Map } from "gojs";
 import type { NodeFile } from "$lib/file_management/file_classes";
+import { toggleVisualiser } from "$lib/visualiser/VisualiserStore";
 
 const $ = go.GraphObject.make;
 const diagram: Diagram = new go.Diagram();
@@ -68,6 +69,9 @@ newTemplateMap.add("textFile", textFileTemplate);
 newTemplateMap.add("imageFile", imageFileTemplate);
 
 diagram.model = new go.GraphLinksModel([ ]);
+
+diagram.addDiagramListener("BackgroundSingleClicked", () => { toggleVisualiser.set() });
+diagram.addDiagramListener("ObjectSingleClicked", () => { toggleVisualiser.set() });
 
 export default {
 	init(diagramDiv: HTMLDivElement) {

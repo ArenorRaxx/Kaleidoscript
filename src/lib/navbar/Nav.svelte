@@ -16,7 +16,7 @@
 
 	export const navOptions: NavOption[] = [
 		{ icon: cogIconUrl, description: "Settings", data: {} },
-		{ icon: plusIconUrl, description: "Add file to diagram", data: { component: AddFileElement, handleClick: onAddFileClick } }
+		{ icon: plusIconUrl, description: "Add file to diagram", data: { component: AddFileElement, handleClick: onAddFileClick } },
 	]
 
 </script>
