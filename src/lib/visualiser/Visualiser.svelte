@@ -1,20 +1,19 @@
-<script context="module" lang="ts">
-</script>
-
 <script lang="ts">
-	import VisualiserStore, { toggleVisualiser } from "./VisualiserStore";
+	import VisualiserStore from "./VisualiserStore";
+	import ToggleVisualiser from "./VisualiserToggleControle";
 	import type { Tweened } from "svelte/motion";
-	import { writable } from "svelte/store";
-	import type { Writable } from "svelte/store";
 
-	const visuWidth: Tweened<number> = toggleVisualiser.widthCursor;
-	const loadFileComponent: Writable<boolean> = writable(false);
+	let visualiserIsExtended: boolean;
+	let thereIsAFileToLoad: boolean;
+	const visuWidth: Tweened<number> = ToggleVisualiser.widthControler;
 
-	$: $loadFileComponent = ($visuWidth === 50 ? true : false);
+	$: visualiserIsExtended = ($visuWidth === 50 ? true : false);
+	$: thereIsAFileToLoad = ($VisualiserStore !== undefined ? true : false);
+	$: loadVisualiser = visualiserIsExtended && thereIsAFileToLoad;
 </script>
 
 <div id="visu-container" style="right: -{$visuWidth}%">
-	{#if $loadFileComponent && $VisualiserStore}
+	{#if loadVisualiser}
 		<h1>{$VisualiserStore.name}</h1>
 		<svelte:component this={$VisualiserStore.visuComponent}/>
 	{/if}
