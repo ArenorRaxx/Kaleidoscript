@@ -1,5 +1,6 @@
 import { NodeFile } from "..";
 import type { ImageNodeData } from "../types";
+import ImageFileVisu from "./ImageFileVisu.svelte";
 
 type Size = {
 	width: number,
@@ -13,7 +14,8 @@ export default class ImageFile extends NodeFile {
 		super(
 			file.name,
 			file,
-			"imageFile"
+			"imageFile",
+			ImageFileVisu
 		);
 	}
 
