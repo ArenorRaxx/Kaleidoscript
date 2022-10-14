@@ -13,8 +13,11 @@
 <style>
 #nav-container {
 	z-index: 100;
-	width: 100%;
+	width: fit-content;
+	margin: auto;
 	position: absolute;
+	right: 0;
+	left: 0;
 	top: 10px;
 	display: flex;
 	flex-direction: column;
