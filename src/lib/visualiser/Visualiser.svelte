@@ -1,32 +1,46 @@
-<script lang="ts">
-	import { toggleVisualiser } from "./VisualiserStore";
-	import type { Tweened } from "svelte/motion";
-	import { tweened } from "svelte/motion";
-	import { quartOut } from "svelte/easing";
-	import { onDestroy } from "svelte";
-
-	const widthOfVisu: Tweened<number> = tweened(100, {
-		duration: 1000,
-		easing: quartOut
-	})
-
-	const unsubscribeToggle = toggleVisualiser.subscribe((toggle: boolean): void => {
-		const newValueOfVisuWidth: number = 50 + (toggle ? 0 : 50);
-		widthOfVisu.set(newValueOfVisuWidth);
-	})
-
-	onDestroy(() => unsubscribeToggle);
+<script context="module" lang="ts">
 </script>
 
-<div id="visu-container" style="right: -{$widthOfVisu}%">
+<script lang="ts">
+	import VisualiserStore, { toggleVisualiser } from "./VisualiserStore";
+	import type { Tweened } from "svelte/motion";
+	import { writable } from "svelte/store";
+	import type { Writable } from "svelte/store";
+
+	const visuWidth: Tweened<number> = toggleVisualiser.widthCursor;
+	const loadFileComponent: Writable<boolean> = writable(false);
+
+	$: $loadFileComponent = ($visuWidth === 50 ? true : false);
+</script>
+
+<div id="visu-container" style="right: -{$visuWidth}%">
+	{#if $loadFileComponent && $VisualiserStore}
+		<h1>{$VisualiserStore.name}</h1>
+		<svelte:component this={$VisualiserStore.visuComponent}/>
+	{/if}
 </div>
 
 <style>
 	#visu-container {
-		top: -100%;
+		width: 50%;
+		height: calc(100%);
+		display: flex;
+		flex-direction: column;
 		position: relative;
-		height: 100%;
+		top: -100%;
 		z-index: 10;
 		background-color: var(--visu-bg);
+	}
+	
+	h1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: "Monserrat", sans-serif;
+		font-weight: 600;
+		font-variant: small-caps;
+		text-align: center;
+		margin: 0;
 	}
 </style>

@@ -16,9 +16,7 @@ function store_file(newFile: File): NodeFile {
 	return (newNodeFile);
 }
 
-function get_file(indexOfFile: number): NodeFile | null {
-	if (indexOfFile < 0)
-		return (null);
+function get_file(indexOfFile: number): NodeFile {
 	return (fileList[indexOfFile]);
 }
 
@@ -47,7 +45,7 @@ export default {
 		return get_currentFile();
 	},
 
-	getFileByName(fileToSearch: string): NodeFile | null {
+	getFileByName(fileToSearch: string): NodeFile {
 		const indexOfFile = fileList.findIndex(file => fileToSearch === file.name);
 		const file = get_file(indexOfFile);
 		return (file);

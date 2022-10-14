@@ -4,7 +4,8 @@ abstract class GenericFile implements GenericFileClass {
 	protected constructor(
 		public readonly name: string,
 		public readonly file: File,
-		public readonly category: fileTypes
+		public readonly category: fileTypes,
+		public readonly visuComponent: ConstructorOfATypedSvelteComponent
 	){};
 }
 
@@ -20,7 +21,7 @@ export abstract class NodeFile extends GenericFile implements NodeFileClass {
 			});
 		});
 	};
-	
+
 	public abstract get data(): Promise<string>;
 	protected abstract getPartialData(): Promise<PartialData>;
 }

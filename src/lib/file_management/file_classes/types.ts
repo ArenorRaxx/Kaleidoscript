@@ -20,6 +20,7 @@ export interface GenericFileClass {
 	readonly name: string;
 	readonly file: File;
 	readonly category: types;
+	readonly visuComponent: ConstructorOfATypedSvelteComponent;
 }
 
 export interface NodeFileClass extends GenericFileClass {
