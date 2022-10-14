@@ -1,6 +1,6 @@
 import type { NodeFile } from "./file_classes";
-import TextFile from "./file_classes/TextFile";
-import ImageFile from "./file_classes/ImageFile";
+import TextFile from "$lib/file_management/file_classes/text_file/TextFile";
+import ImageFile from "$lib/file_management/file_classes/image_file/ImageFile";
 
 export default (fileToSort: File): NodeFile => {
 	let newNodeFile: NodeFile;
