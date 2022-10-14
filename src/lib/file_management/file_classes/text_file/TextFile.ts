@@ -1,12 +1,14 @@
-import { NodeFile } from ".";
-import type { PartialData } from "./types";
+import VisuComponent from "./TextFileVisu.svelte";
+import { NodeFile } from "..";
+import type { PartialData } from "../types";
 
 export default class TextFile extends NodeFile {
 	public constructor(file: File) {
 		super(
 			file.name,
 			file,
-			"textFile"
+			"textFile",
+			VisuComponent
 		);
 	}
 	

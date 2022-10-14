@@ -1,5 +1,5 @@
-import { NodeFile } from ".";
-import type { ImageNodeData } from "./types";
+import { NodeFile } from "..";
+import type { ImageNodeData } from "../types";
 
 type Size = {
 	width: number,
