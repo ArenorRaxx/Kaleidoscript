@@ -1,7 +1,7 @@
 import go, { Diagram} from "gojs";
 import { diagramTemplateMap } from "./DiagramNodeTemplate";
 import type { NodeFile } from "$lib/file_management/file_classes";
-import ToggleVisualiser from "$lib/visualiser/VisualiserToggleControle";
+import VisualiserMotionControl from "$lib/visualiser/VisualiserMotionControl";
 import VisualiserStore from "$lib/visualiser/VisualiserStore";
 
 const diagram: Diagram = new go.Diagram();
@@ -10,18 +10,18 @@ diagram.model = new go.GraphLinksModel([ ]);
 diagram.nodeTemplateMap = diagramTemplateMap;
 
 diagram.addDiagramListener("BackgroundSingleClicked", () => { 
-	if (ToggleVisualiser.toggle === true)
-		ToggleVisualiser.set()
+	if (VisualiserMotionControl.toggle === true)
+		VisualiserMotionControl.switch();
 });
 
 diagram.addDiagramListener("ObjectSingleClicked", (event) => {
 	const newFileName: string = event.subject.part.data.name;
 	const lastFile: NodeFile = VisualiserStore.get();
-	if (lastFile === undefined || !ToggleVisualiser.toggle) {
-		ToggleVisualiser.set();
+	if (lastFile === undefined || !VisualiserMotionControl.toggle) {
 		VisualiserStore.set(newFileName);
+		VisualiserMotionControl.switch();
 	} else if (lastFile.name === newFileName)
-		ToggleVisualiser.set();
+		VisualiserMotionControl.switch();
 	else
 		VisualiserStore.set(newFileName);
 });
