@@ -1,18 +1,16 @@
 import type { NodeFile } from "./file_classes/";
 import FileSorter from "./FileSortAndInit";
 
-let fileList: NodeFile[] = [];
+const fileList: NodeFile[] = [];
 const subscribers: Function[] = [];
 
-function get_currentFile(): NodeFile | null {
-	if (fileList.length == 0)
-		return (null);
-	return (fileList[0]);
-}
-
-function store_file(newFile: File): NodeFile {
+function check_and_store_file(newFile: File): NodeFile | null {
 	const newNodeFile = FileSorter(newFile);
-	fileList = [newNodeFile, ...fileList];
+
+	for(const storedFile of fileList)
+		if (storedFile.is(newNodeFile))
+			return (null);
+	fileList.push(newNodeFile);
 	return (newNodeFile);
 }
 
@@ -22,9 +20,8 @@ function get_file(indexOfFile: number): NodeFile {
 
 export default {
 	subscribe(callback: (file: NodeFile) => void): Function {
-		let currentFile = get_currentFile();
-		if (currentFile !== null)
-			callback(currentFile);
+		if (fileList.length !== 0)
+			fileList.forEach(storedFile => { callback(storedFile) })
 
 		subscribers.push(callback);
 
@@ -35,18 +32,19 @@ export default {
 	},
 
 	set(newFile: File) {
-		const nodeFile = store_file(newFile);
-		subscribers.forEach((toCall) => {
+		const nodeFile = check_and_store_file(newFile);
+		if (!nodeFile)
+		{
+			setTimeout(() => alert("You can't add the same file multiple times !"), 200);
+			return ;
+		}
+			subscribers.forEach((toCall) => {
 			toCall(nodeFile);
 		});
 	},
 
-	get(): NodeFile | null {
-		return get_currentFile();
-	},
-
-	getFileByName(fileToSearch: string): NodeFile {
-		const indexOfFile = fileList.findIndex(file => fileToSearch === file.name);
+	getFileByName(nameOfFileToSearch: string): NodeFile {
+		const indexOfFile = fileList.findIndex(file => nameOfFileToSearch === file.name);
 		const file = get_file(indexOfFile);
 		return (file);
 	}
