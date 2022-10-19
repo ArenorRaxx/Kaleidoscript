@@ -82,12 +82,13 @@ Non-technical milestones before "v1.0"
 *`<<<` : Current progress of work. (this is a single-threaded dev process. hi.)*
 ____________________________________________________________________
 
-- [X] ~~Merge the [vanillaJS version](https://github.com/ArenorRaxx/Kaleidoscript-vanillaJS) to SvelteKit (by merely adapting it)~~; 
- > ##### Well, some options are missing, but I did not just merely adapted it. <u>I improved it</u>.
+ - [X] ~~Merge the [vanillaJS version](https://github.com/ArenorRaxx/Kaleidoscript-vanillaJS) to SvelteKit (by merely adapting it)~~; 
+ > ##### Well, some options are missing, but we did not just merely adapted it. <u>We improved it</u>.
 
- - [ ] Decide whether discontinuing the use of the *GoJS Library* would benefit the project at this stage and experiment on the *modularity* of the API *(as it is not an OpenSource library)*; `<<<`
+ - [X] ~~Decide whether discontinuing the use of the *GoJS Library* would benefit the project at this stage and experiment on the *modularity* of the API *(as it is not an OpenSource library)*~~;
+ > ##### GoJS is not OpenSource, nor does it possess a Non-Commercial Licence. As GoJS is a fairly modular and permissive library, at this stage there's no good reason to put hard work into remaking the wheel.
 
- - [ ] MO' *TYPES OF FILE* (like PDF, source code, LaTeX would be nice too). A ~~complete~~ list will be composed  in the future;
+ - [ ] MO' *TYPES OF FILE* (like PDF, source code, LaTeX would be nice too). A ~~complete~~ list will be composed  in the future; `<<<`
 
  - [ ] Working on the user-friendliness. Planning to add contextual menu, give use to the Settings button, add a "tool" option to select different tools *GoJS/our library* implements.
 
