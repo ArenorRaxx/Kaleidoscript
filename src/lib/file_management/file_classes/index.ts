@@ -7,9 +7,18 @@ abstract class GenericFile implements GenericFileClass {
 		public readonly category: fileTypes,
 		public readonly visuComponent: ConstructorOfATypedSvelteComponent
 	){};
+
+	public abstract is(file: GenericFile): boolean;
 }
 
 export abstract class NodeFile extends GenericFile implements NodeFileClass {
+
+	public is(file: NodeFile): boolean {
+		if (this.file === file.file || this.name === file.name)
+			return (true);
+		return (false);
+	}
+
 	public get node(): Promise<NodeData> {
 		return new Promise<NodeData>(async (resolve, reject) => {
 			const partialData: PartialData = await this.getPartialData();

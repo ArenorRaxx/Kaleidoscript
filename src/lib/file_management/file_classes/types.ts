@@ -6,6 +6,7 @@ export interface NodeData {
 	category: types;
 	width?: number;
 	height?: number;
+
 }
 
 export interface PartialData {
@@ -21,6 +22,7 @@ export interface GenericFileClass {
 	readonly file: File;
 	readonly category: types;
 	readonly visuComponent: ConstructorOfATypedSvelteComponent;
+	is(file: GenericFileClass): boolean;
 }
 
 export interface NodeFileClass extends GenericFileClass {
