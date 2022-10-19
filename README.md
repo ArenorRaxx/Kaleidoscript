@@ -89,6 +89,8 @@ ____________________________________________________________________
 
  - [ ] MO' *TYPES OF FILE* (like PDF, source code, LaTeX would be nice too). A ~~complete~~ list will be composed  in the future;
 
+ - [ ] Working on the user-friendliness. Planning to add contextual menu, give use to the Settings button, add a "tool" option to select different tools *GoJS/our library* implements.
+
  - [ ] "The Visualiser is feeling empty and useless. Let's make an *Editor*."
 
  - [ ] A *kaleidoscript file* is a thing 🎊🎉🎉 (i'm excited for this one)
